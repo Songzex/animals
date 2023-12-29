@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scy.mapper.UserMapper">
+   <resultMap id="user" type="com.scy.pojo.User"></resultMap>
+    <insert id="addUser" parameterType="com.scy.pojo.User">
+        INSERT INTO user (username, email, password, telet, sex, age, userid) VALUES
+            (#{username}, #{email}, #{password}, #{telet}, #{sex}, #{age}, #{userid})
+    </insert>
+    <select id="Login" parameterType="string" resultMap="user">
+        SELECT * from  user WHERE  email=#{email}
+    </select>
+    <select id="selelctemail" resultType="com.scy.pojo.User">
+        select count(1) from user where  email=#{email}
+    </select>
+</mapper>

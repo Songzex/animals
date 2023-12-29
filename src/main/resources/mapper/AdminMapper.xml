@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scy.mapper.AdminMapper">
+
+    <resultMap id="BaseResultMap" type="com.scy.pojo.Admin">
+            <id property="adId" column="ad_id" jdbcType="INTEGER"/>
+            <result property="adName" column="ad_name" jdbcType="VARCHAR"/>
+            <result property="adSex" column="ad_sex" jdbcType="TINYINT"/>
+            <result property="adEmail" column="ad_email" jdbcType="VARCHAR"/>
+            <result property="adPassword" column="ad_password" jdbcType="VARCHAR"/>
+            <result property="adAge" column="ad_age" jdbcType="INTEGER"/>
+            <result property="adTelet" column="ad_telet" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        ad_id,ad_name,ad_sex,
+        ad_email,ad_password,ad_age,
+        ad_telet
+    </sql>
+</mapper>

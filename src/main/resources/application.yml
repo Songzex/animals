@@ -1,0 +1,77 @@
+server:
+  port: 8089
+#数据源
+spring:
+  # 数据库链接配置
+  datasource:
+    url: jdbc:mysql://localhost:3306/animals?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: root
+    # 链接池
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      # 链接池初始化大小
+      initial-size: 8
+      # 最大活跃数
+      max-active: 16
+      # 最小空闲数
+      min-idle: 1
+      # 最大等待时间
+      max-wait: 60000
+#邮箱
+  data:
+    mongodb:
+      uri: mongodb://127.0.0.1:27017/test
+  mail:
+    host: smtp.qq.com
+    username: 3328397500@qq.com
+    password: tlvejmuovlojchig
+    properties:
+      mail.smtp.auth: true
+      mail.smtp.starttls.enable: true
+      mail.smtp.starttls.required: true
+  redis:
+    database: 0
+    host: localhost
+    port: 6379
+    password:
+    jedis:
+      pool:
+        max-wait: -1ms
+        max-active: 1000
+        max-idle: 16
+        min-idle: 8
+# mybatis配置
+mybatis:
+  mapper-locations: classpath*:mapper*xml
+  type-aliases-package: com.scy.pojo
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    map-underscore-to-camel-case: true
+
+
+
+#日志
+logging:
+  level:
+    root: info
+    com.scy.dao: warn
+  pattern:
+    console: "%d{HH:mm:ss}  %-5level  %msg%n"
+
+
+Animal:
+  jwt:
+    secret: 12312
+    expire: 5
+    cache-expire: 1000
+
+#支付
+wechatpay:
+  mchId: YourMchId
+  apiSecret: YourApiSecret
+  certPath: /path/to/your/apiclient_cert.p12
+  certPassword: xvgcvvdvkviwhvoevpwup
+
+

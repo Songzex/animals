@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scy.mapper.AnimalMapper">
+
+    <resultMap id="BaseResultMap" type="com.scy.pojo.Animal">
+            <id property="animalId" column="animal_id" jdbcType="INTEGER"/>
+            <result property="animalSpecies" column="animal_species" jdbcType="VARCHAR"/>
+            <result property="animalAge" column="animal_age" jdbcType="INTEGER"/>
+            <result property="animalSex" column="animal_sex" jdbcType="TINYINT"/>
+            <result property="animalName" column="animal_name" jdbcType="VARCHAR"/>
+            <result property="annimalDate" column="annimal_date" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        animal_id,animal_species,animal_age,
+        animal_sex,animal_name,annimal_date
+    </sql>
+</mapper>
