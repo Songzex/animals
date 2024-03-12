@@ -12,6 +12,9 @@
         SELECT * from  user WHERE  email=#{email}
     </select>
     <select id="selelctemail" resultType="com.scy.pojo.User">
-        select count(1) from user where  email=#{email}
+        select * from user where  email=#{email}
+    </select>
+    <select id="getUserRoles" >
+         select roles from user_roles where  userid=#{userid} and status=1
     </select>
 </mapper>

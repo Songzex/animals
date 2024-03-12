@@ -2,7 +2,10 @@ package com.scy.service;
 
 import com.scy.pojo.User;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.scy.pojo.UserRole;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 /**
 * @author 24022
@@ -15,4 +18,5 @@ public interface UserService extends IService<User> {
     User Login( String id);
 
     User selelctemail(String userEmail);
+    Set<String> getUserRoles(int userId);
 }

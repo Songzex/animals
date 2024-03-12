@@ -63,7 +63,7 @@ logging:
 
 Animal:
   jwt:
-    secret: 12312
+    secret: "12312"
     expire: 5
     cache-expire: 1000
 

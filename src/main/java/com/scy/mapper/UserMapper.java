@@ -2,7 +2,10 @@ package com.scy.mapper;
 
 import com.scy.pojo.User;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.scy.pojo.UserRole;
 import org.apache.ibatis.annotations.Mapper;
+
+import java.util.Set;
 
 /**
 * @author 24022
@@ -18,6 +21,8 @@ public interface UserMapper extends BaseMapper<User> {
        User Login(String email);
 
        User selelctemail(String userEmail);
+
+    Set<String> getUserRoles(int userId);
 }
 
 

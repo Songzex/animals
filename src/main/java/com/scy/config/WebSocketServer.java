@@ -13,25 +13,25 @@ import java.util.concurrent.CopyOnWriteArrayList;
 public class WebSocketServer {
     private static CopyOnWriteArrayList<WebSocketServer> webSocketServers = new CopyOnWriteArrayList<>();
     private Session session;
-
+// 打开链接
     @OnOpen
     public void onOpen(Session session) {
         this.session = session;
         webSocketServers.add(this);
         System.out.println("WebSocket连接建立");
     }
-
+//   关闭连接
     @OnClose
     public void onClose() {
         webSocketServers.remove(this);
         System.out.println("WebSocket连接关闭");
     }
-
+// 错误触发
     @OnError
     public void onError(Throwable error) {
         System.err.println("WebSocket发生错误：" + error.getMessage());
     }
-
+// 收到的信息
     @OnMessage
     public void onMessage(String message) {
         System.out.println("收到消息：" + message);
@@ -45,7 +45,7 @@ public class WebSocketServer {
             }
         }
     }
-
+//发送信息
     private void sendMessage(String message) throws IOException {
         this.session.getBasicRemote().sendText(message);
     }

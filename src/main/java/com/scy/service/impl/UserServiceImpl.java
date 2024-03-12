@@ -3,10 +3,13 @@ package com.scy.service.impl;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.scy.pojo.User;
 import com.scy.mapper.UserMapper;
+import com.scy.pojo.UserRole;
 import com.scy.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 /**
 * @author 24022
@@ -33,8 +36,13 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
   @Override
   public User selelctemail(String userEmail) {
-    userMapper.selelctemail(userEmail);
-    return null;
+    User user = userMapper.selelctemail(userEmail);
+    return user;
+  }
+
+  @Override
+  public Set<String> getUserRoles(int userId) {
+    return userMapper.getUserRoles(userId);
   }
 }
 

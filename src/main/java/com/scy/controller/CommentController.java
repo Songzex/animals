@@ -29,7 +29,7 @@ public class CommentController {
     MongoTemplate mongoTemplate;
     @GetMapping ("mongo/")
     @ResponseBody
-    public List<Comment> getComment(){
+    public List<Comment>getComment(){
         System.out.println(123);
         List<Comment> all1 = mongomapper.findAll();
         return all1;
@@ -81,7 +81,7 @@ public class CommentController {
     @CrossOrigin
     @ResponseBody
     public String gettexts(){  ////id  Articleid name date commentcontext  SecondComment  (string)
-         Comment comment = mongomapper.insert(new Comment("12", "12-1", "诸葛亮", "2023-12-8", "神机妙算。运筹帷幄", new ArrayList<SecondComment>()));
+         Comment comment = mongomapper.insert(new Comment("12", "12-1", "诸葛亮", "2023-12-8", "神机妙算。运筹  帷幄", new ArrayList<SecondComment>()));
          mongomapper.save(comment);
         //插入到mongodb
         System.out.println(123);

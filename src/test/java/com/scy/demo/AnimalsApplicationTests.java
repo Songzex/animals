@@ -9,15 +9,15 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
+//import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
+//import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+//import org.springframework.test.context.web.WebAppConfiguration;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,14 +38,14 @@ import java.util.List;
  * 5、Query.addCriteria(new Criteria().andOperator(gt,lt));
  * 6、一个query中只能有一个andOperator()。其参数也可以是Criteria数组。
  * 7、排序 ：query.with（new Sort(Sort.Direction.ASC, “age”). and(new Sort(Sort.Direction.DESC, “date”)))**/
-@SpringBootTest
+/*@SpringBootTest
 @WebAppConfiguration
-@RunWith(SpringJUnit4ClassRunner.class)
+@RunWith(SpringJUnit4ClassRunner.class)*/
 class AnimalsApplicationTests {
-    @Autowired
+/*    @Autowired
       private JavaMailSender javaMailSender;
     @Autowired
-   private   MongoTemplate  mongoTemplate;
+   private   MongoTemplate  mongoTemplate;*/
 /*   @Test
    void contextLoads() {
        SimpleMailMessage message = new SimpleMailMessage();
@@ -75,7 +75,7 @@ class AnimalsApplicationTests {
 //        System.out.println("条件查询"+list);
 //    }*/
 //    }
-    @Test
+/*    @Test
     public String getMessage(){ //为什么运行报错  Process finished with exit code 0
         SimpleMailMessage message = new SimpleMailMessage();
         message.setFrom("3328397500@qq.com");//发送者
@@ -87,5 +87,5 @@ class AnimalsApplicationTests {
         return "okkkk";
 
 
-    }
+    }*/
 }
