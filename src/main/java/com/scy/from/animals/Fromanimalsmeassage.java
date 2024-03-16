@@ -4,16 +4,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-/*@Data
+import java.util.Date;
+
+@Data
 @AllArgsConstructor
-@NoArgsConstructor*/
+@NoArgsConstructor
 public class Fromanimalsmeassage {
-         //动物区域
-        // 种类猫咪 小狗
-       // 你的联系电话
-      //  图片
-     //  叙述（过程）
-    //  投喂次数
-    // 是否给与资金救助
-    //是否订阅消息的推送
+    private  String  name;
+    private  String region;
+    private String date;
+    private Integer shadow;
+    private Integer sex;
+    private String helathly;
+    private String notes;
+
 }

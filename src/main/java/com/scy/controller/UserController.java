@@ -1,29 +1,21 @@
 package com.scy.controller;
 
-import com.scy.config.OAuth2Token;
+import com.scy.config.JwtToken;
+import com.scy.config.JwtUtil;
 import com.scy.from.FromUser;
 import com.scy.from.Fromlogin;
-import com.scy.from.ToFrom;
-import com.scy.mogomapper.Mongomapper;
 import com.scy.pojo.User;
-import com.scy.pojo.UserRole;
-import com.scy.pojo.mogopojo.Comment;
 import com.scy.resoult.Resoult;
 import com.scy.service.UserService;
-import com.scy.service.impl.UserServiceImpl;
 import com.scy.utils.JwtBlacklist;
-import com.scy.utils.JwtUtils;
 import com.scy.utils.PasswordUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.shiro.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @RestController
 @RequestMapping("user/")
@@ -31,7 +23,7 @@ import java.util.Set;
 @Slf4j
 public class UserController {
     @Autowired
-    private JwtUtils jwtUtils;
+    private JwtUtil jwtUtils;
 
     @Autowired
     private UserService userService;
@@ -78,11 +70,11 @@ public class UserController {
         if (existingUser == null) {
             return new Resoult(500, "用户不存在", null);
         } else if (PasswordUtil.verifyPassword(user.getPass(),"ad111sfsfsA",existingUser.getPassword())) {
-            String token = jwtUtils.createToken(existingUser.getUserid());
-           OAuth2Token oAuth2Token = new OAuth2Token(token);
+            String token = jwtUtils.cretaeToken(user.getEmail(),"123321");
+            JwtToken oAuth2Token = new JwtToken(token);
             System.out.println("token是。。。。。"+token);
             // 调用 Subject.login 方法进行登录，将用户的身份信息传递给 Shiro
-            SecurityUtils.getSubject().login(oAuth2Token);
+//            SecurityUtils.getSubject().login(oAuth2Token);
             return new Resoult(200, "", token);
         } else {
             return new Resoult(500, "", null);
@@ -93,4 +85,7 @@ public class UserController {
         jwtBlacklist.addToBlacklist(token);
         return "out success";
     }
+
+
+
 }

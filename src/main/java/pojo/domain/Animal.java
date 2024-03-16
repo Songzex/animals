@@ -1,14 +1,11 @@
-package com.scy.pojo;
+package pojo.domain;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 import java.io.Serializable;
+import lombok.Data;
 
 /**
  * 
@@ -16,8 +13,6 @@ import java.io.Serializable;
  */
 @TableName(value ="animal")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class Animal implements Serializable {
     /**
      * 
@@ -28,51 +23,55 @@ public class Animal implements Serializable {
     /**
      * 
      */
-
+    @TableField(value = "animal_age")
     private Integer animal_age;
 
     /**
      * 
      */
-
+    @TableField(value = "animal_sex")
     private Integer animal_sex;
 
     /**
      * 
      */
-
+    @TableField(value = "animal_name")
     private String animal_name;
 
     /**
      * 
      */
+    @TableField(value = "annimal_date")
     private String annimal_date;
 
     /**
      * 
      */
-
+    @TableField(value = "animal_shadow")
     private Integer animal_shadow;
 
     /**
      * 
      */
-
+    @TableField(value = "animals_heathly")
     private String animals_heathly;
 
-
+    /**
+     * 
+     */
+    @TableField(value = "animals_photo")
     private String animals_photo;
 
     /**
      * 
      */
-
+    @TableField(value = "animals_notes")
     private String animals_notes;
 
     /**
      * 
      */
-
+    @TableField(value = "animals_uemail")
     private String animals_uemail;
 
     @TableField(exist = false)

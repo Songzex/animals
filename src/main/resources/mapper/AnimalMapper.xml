@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scy.mapper.AnimalMapper">
+
+<!--    <select id="findall" resultType="com.scy.pojo.Animal">-->
+<!--        SELECT * FROM animal WHERE  animals_uemail=#{animals_uemail};-->
+<!--    </select>-->
+    <!-- <select id="findall" resultType="com.scy.pojo.Animal">
+         SELECT animals_photo FROM animal WHERE  animals_uemail=#{animals_uemail}
+     </select>-->
+    <select id="findall" resultType="com.scy.pojo.Animal">
+        SELECT * FROM animal WHERE  animals_uemail=#{animals_uemail};
+    </select>
+</mapper>

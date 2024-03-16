@@ -1,10 +1,7 @@
 package com.scy.demo;
 
-import com.scy.mapper.UserMapper;
 import com.scy.service.UserService;
 import com.scy.service.impl.UserServiceImpl;
-import com.scy.utils.JwtUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Set;
 

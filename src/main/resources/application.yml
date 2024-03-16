@@ -74,4 +74,14 @@ wechatpay:
   certPath: /path/to/your/apiclient_cert.p12
   certPassword: xvgcvvdvkviwhvoevpwup
 
+qiniu:
+  kodo:
+    # 配置accessKey
+    accessKey: oGONCQtRfbLCdWHb1VeOUPLp8Og4P3J-q80RjiIC
+    # 配置secretKey
+    secretKey: bZ8OtQY_FzGN2_9oMnuedpkE4HaGqx1zdtIKh-b1
+    # 配置空间名称
+    bucket: 20241237cat
+    # 配置域名
+    domain: sadj5svyg.hb-bkt.clouddn.com
 

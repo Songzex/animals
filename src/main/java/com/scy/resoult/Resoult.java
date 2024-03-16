@@ -1,7 +1,5 @@
 package com.scy.resoult;
 
-import com.scy.config.OAuth2Token;
-
 public class Resoult {
     // 状态码
     private int statusCode;
