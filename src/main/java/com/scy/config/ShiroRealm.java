@@ -1,12 +1,15 @@
 package com.scy.config;
 
 import cn.hutool.http.HttpRequest;
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.scy.mapper.UserAdditionalMapper;
 import com.scy.mapper.UserMapper;
 import com.scy.pojo.User;
 //import com.soyuan.bigdata.heartbeat.common.CommonConstant;
 //import com.soyuan.bigdata.heartbeat.entity.LoginUser;
 //import com.soyuan.bigdata.heartbeat.utils.JwtUtil;
 //import com.soyuan.bigdata.heartbeat.utils.RedisUtil;
+import com.scy.pojo.UserAdditional;
 import lombok.extern.slf4j.Slf4j;
 //import org.apache.commons.lang.StringUtils;
 import org.apache.shiro.authc.AuthenticationException;
@@ -36,9 +39,12 @@ import java.util.UUID;
 public class ShiroRealm extends AuthorizingRealm {
     @Autowired
     private UserMapper userMapper;
+    @Autowired
+    private UserAdditionalMapper userAdditionalMapper;
 
     @Autowired
     private  ThreadLocalToken threadLocalToken;
+
 
     /**
      * 必须重写此方法，不然Shiro会报错

@@ -1,4 +1,4 @@
-package com.scy.controller.uservo;
+package com.scy.controller;
 
 import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.annotation.TableField;

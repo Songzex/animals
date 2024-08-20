@@ -1,9 +1,21 @@
 package com.scy.controller;
 
+import com.scy.config.JwtUtil;
+import com.scy.config.ThreadLocalToken;
 import com.scy.from.CommentInster;
+import com.scy.from.message.FileSCommentInster;
+import com.scy.mapper.UserMapper;
 import com.scy.mogomapper.Mongomapper;
+import com.scy.pojo.User;
+import com.scy.pojo.UserAdditional;
 import com.scy.pojo.mogopojo.Comment;
 import com.scy.pojo.mogopojo.SecondComment;
+import com.scy.resoult.Resoult;
+import com.scy.service.UserAdditionalService;
+import com.scy.service.UserService;
+import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.authz.annotation.Logical;
+import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.MongoTemplate;
@@ -12,6 +24,7 @@ import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
+import java.nio.file.FileStore;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -22,17 +35,33 @@ import static org.apache.ibatis.ognl.DynamicSubscript.all;
 @RestController
 @RequestMapping("comment/")
 @CrossOrigin
+@Slf4j
 public class CommentController {
+    @Autowired
+    UserAdditionalService userAdditionalService;
+    @Autowired
+    UserService userService;
+    @Autowired
+    private ThreadLocalToken threadLocal;
+
     @Autowired
     Mongomapper mongomapper;
     @Autowired
     MongoTemplate mongoTemplate;
-    @GetMapping ("mongo/")
+    @PostMapping ("mongo/")
     @ResponseBody
-    public List<Comment>getComment(){
+    public List<Comment>getComment(@RequestBody Map<String, String> requestBody){//文章id
+        String email = requestBody.get("articleId");
+        Query query = new Query(
+                new Criteria().andOperator(
+                        Criteria.where("articleid").is(email),
+                        Criteria.where("secondComment").exists(false)
+                )
+        );
+        List<Comment> list = mongoTemplate.find(query, Comment.class);
         System.out.println(123);
         List<Comment> all1 = mongomapper.findAll();
-        return all1;
+        return list;
     }
     @GetMapping ("list/")
     public String get(){
@@ -44,6 +73,12 @@ public class CommentController {
     @CrossOrigin
     @ResponseBody
     public String gettext(@RequestBody CommentInster request){
+        String threadLocalToken = threadLocal.getToken();
+        String username = JwtUtil.getUsername(threadLocalToken);
+        User existingUser = userService.selelctemail(username);
+        UserAdditional additional = userAdditionalService.select(existingUser.getUserid());
+        String userphoto = additional.getUserphoto();
+        String userUsername = existingUser.getUsername();
        /* Object email = request.getValue();//n
         System.out.println(email);//null
         Object id = request.getId();
@@ -56,11 +91,18 @@ public class CommentController {
         if (commentOptional.isPresent()) {
             Comment comment = commentOptional.get();
             System.out.println(comment);
-            List<SecondComment> secondCommentList = comment.getSecondComment();//拿到二级评论集合
-            secondCommentList.add(new SecondComment(request.getId(), request.getUid(), request.getUname(), request.getDates(), request.getValue()));//体检评论数据
+            List<SecondComment> secondcomment = comment.getSecondcomment();
+            if (secondcomment == null){
+                secondcomment = new ArrayList<>();
+                secondcomment.add(new SecondComment(request.getId(), request.getUid(), userUsername, request.getDates(), request.getValue(),userphoto));//体检评论数据
+                mongomapper.save(comment);
+            }else {
+            List<SecondComment> secondCommentList = comment.getSecondcomment();
+            //拿到二级评论集合
+            secondCommentList.add(new SecondComment(request.getId(), request.getUid(), userUsername, request.getDates(), request.getValue(),userphoto));//体检评论数据
             for ( SecondComment secondComment:secondCommentList){
                 System.out.println(secondComment.toString());//遍历出来了新插入的数据 但是mongodb数据库里边没有刷新出来 也即是没有持久化存储 前端也没有遍历出来 注意最后保存 save（）
-            }
+            }}
             mongomapper.save(comment);// 提交到数据库保存
         }//输出以及评论
 
@@ -80,12 +122,42 @@ public class CommentController {
     @PostMapping ("texts/")
     @CrossOrigin
     @ResponseBody
-    public String gettexts(){  ////id  Articleid name date commentcontext  SecondComment  (string)
-         Comment comment = mongomapper.insert(new Comment("12", "12-1", "诸葛亮", "2023-12-8", "神机妙算。运筹  帷幄", new ArrayList<SecondComment>()));
-         mongomapper.save(comment);
+    public String gettexts(@RequestBody FileSCommentInster commentInster){
+        String threadLocalToken = threadLocal.getToken();
+        String username = JwtUtil.getUsername(threadLocalToken);
+        User existingUser = userService.selelctemail(username);
+        UserAdditional additional = userAdditionalService.select(existingUser.getUserid());
+        String userphoto = additional.getUserphoto();
+        ////id  Articleid name date commentcontext  SecondComment  (string)
+        log.info("222"+commentInster.getValue());
+        Comment comment = mongomapper.insert(new Comment(null, commentInster.getId(), existingUser.getUsername(), commentInster.getDates(), commentInster.getValue(),userphoto, new ArrayList<SecondComment>()));
+        Comment saved = mongomapper.save(comment);
         //插入到mongodb
-        System.out.println(123);
         return null;
+    }
+
+
+    /**
+     * 评论审查操作
+     * @return
+     */
+    @PostMapping("/commentdo")
+    @RequiresRoles(value={"ADMIN", "SUPER"}, logical= Logical.OR)
+    public Resoult commentdo(@RequestBody Map<String ,String> id) {
+        String string = id.get("id");
+        mongomapper.deleteById(string);
+        return new Resoult(200,"删除成功",null);
+    }
+
+    /**
+     * 评论全查
+     * @return
+     */
+    @PostMapping("/commentall")
+    @RequiresRoles("ADMIN")
+    public Resoult commentall() {
+        List<Comment> commentList = mongomapper.findAll();
+        return new Resoult(200,commentList,null);
     }
 
 }

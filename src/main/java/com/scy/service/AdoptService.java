@@ -3,6 +3,8 @@ package com.scy.service;
 import com.scy.pojo.Adopt;
 import com.baomidou.mybatisplus.extension.service.IService;
 
+import java.util.List;
+
 /**
 * @author 24022
 * @description 针对表【adopt】的数据库操作Service
@@ -10,4 +12,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
 */
 public interface AdoptService extends IService<Adopt> {
 
+    List<Adopt> findAll();
 }

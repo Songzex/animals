@@ -22,7 +22,7 @@ public class QiniuKodoUtil {
     /**
      * 构造一个带指定 Region 对象的配置类，因为我的是华南机房，所以为Region.region2()
      */
-    Configuration cfg = new Configuration(Region.region1());
+    Configuration cfg = new Configuration(Region.autoRegion());
     @Value("${qiniu.kodo.accessKey}")
     String accessKey;
     @Value("${qiniu.kodo.secretKey}")

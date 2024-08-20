@@ -1,5 +1,6 @@
 package com.scy.from.animals;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,7 @@ public class Fromanimalsmeassage {
     private Integer sex;
     private String helathly;
     private String notes;
+    private String animalsWhere;
+    private String animalsType;
 
 }

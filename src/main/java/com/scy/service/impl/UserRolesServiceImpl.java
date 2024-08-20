@@ -1,9 +1,9 @@
-package pojo.service.impl;
+package com.scy.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import pojo.domain.UserRoles;
-import pojo.service.UserRolesService;
-import pojo.mapper.UserRolesMapper;
+import com.scy.pojo.UserRole;
+import com.scy.service.UserRoleService;
+import com.scy.mapper.UserRolesMapper;
 import org.springframework.stereotype.Service;
 
 /**
@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service;
 * @createDate 2024-05-12 12:41:38
 */
 @Service
-public class UserRolesServiceImpl extends ServiceImpl<UserRolesMapper, UserRoles>
-    implements UserRolesService{
+public class UserRolesServiceImpl extends ServiceImpl<UserRolesMapper, UserRole>
+    implements UserRoleService {
 
 }
 

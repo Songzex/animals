@@ -9,10 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CommentInster {
-    private String value;
-    private String id;
-    private String  dates;
-    private String uid;
-    private  String uname;
+    private String value;//内容
+    private String id;//一级id
+    private String dates;//日期
+    private String uid;//
+    private String uname;//用户邮箱
+    private String photo;//用户头像
 
 }

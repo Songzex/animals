@@ -4,15 +4,4 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.scy.mapper.ArticleMapper">
 
-    <resultMap id="BaseResultMap" type="com.scy.pojo.Article">
-            <id property="articleId" column="article_id" jdbcType="INTEGER"/>
-            <result property="articleName" column="article_name" jdbcType="VARCHAR"/>
-            <result property="articleAuthor" column="article_author" jdbcType="VARCHAR"/>
-            <result property="articleContext" column="article _context" jdbcType="VARCHAR"/>
-    </resultMap>
-
-    <sql id="Base_Column_List">
-        article_id,article_name,article_author,
-        article _context,author_iamge
-    </sql>
 </mapper>

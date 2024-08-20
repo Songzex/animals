@@ -1,6 +1,7 @@
 package com.scy.from;
 
 import com.scy.pojo.User;
+import com.scy.pojo.UserAdditional;
 import com.scy.pojo.UserRole;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -14,5 +15,7 @@ import java.util.Set;
 @NoArgsConstructor
 public class ToFrom {
     private User user;
-    private Set<UserRole> roles;
+    private UserAdditional userAdditional;
+    private  String roles;
+
 }

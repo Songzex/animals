@@ -2,6 +2,8 @@ package com.scy.service;
 
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.scy.controller.AnimalTags;
+import com.scy.from.article.ArticleTags;
 import com.scy.pojo.Animal;
 
 import java.util.List;
@@ -12,5 +14,29 @@ import java.util.List;
 * @createDate 2024-03-16 14:53:04
 */
 public interface AnimalService extends IService<Animal> {
-    List<Animal> findall(String email);
+    /**
+     * 条件查询
+     * @param email
+     * @return
+     */
+    List<Animal> findall(String email);    /**
+     * 条件查询
+     * @param email
+     * @return
+     */
+    List<Animal> findalls(String email);
+
+    /**
+     * 全查
+     * @return
+     */
+    List<Animal> findAll();
+
+    List<Animal> selectallxin(ArticleTags articleTags);
+
+    List<Animal> selectbytags(AnimalTags animalTags);
+
+    void  updates(Animal animal);
+
+    List<Animal> findAlltui();
 }

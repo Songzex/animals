@@ -13,12 +13,13 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SecondComment {
     @Id
     private   String  id;
-    private  String  Articleid;
+    private  String  articleid;
 
     private  String name;
 
     private  String date;
 
     private String commentcontext;
+    private String photo;
 
 }

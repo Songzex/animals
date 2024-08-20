@@ -38,10 +38,11 @@ public class Adopt implements Serializable {
     /**
      * 
      */
+    @TableField(value = "animal_id")
     private Integer animalId;
 
     /**
-     * 
+     * 审核员字段
      */
     private Integer adminId;
 

@@ -23,6 +23,7 @@ public interface UserMapper extends BaseMapper<User> {
        User selelctemail(String userEmail);
 
     Set<String> getUserRoles(int userId);
+
 }
 
 

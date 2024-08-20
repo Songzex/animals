@@ -17,7 +17,8 @@ public class UserRole {
     private Integer id;
     private String roles;//角色
     private Integer userid;
-    private Boolean status;
+    private Integer status;
+
 
 
     public UserRole(String role, Integer id) {

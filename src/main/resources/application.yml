@@ -1,5 +1,5 @@
 server:
-  port: 8089
+  port: 8192
 #数据源
 spring:
   # 数据库链接配置
@@ -19,14 +19,19 @@ spring:
       min-idle: 1
       # 最大等待时间
       max-wait: 60000
-#邮箱
+#上传
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 50MB
+  #邮箱
   data:
     mongodb:
-      uri: mongodb://127.0.0.1:27017/test
+      uri: mongodb://127.0.0.1:27017/com
   mail:
     host: smtp.qq.com
     username: 3328397500@qq.com
-    password: tlvejmuovlojchig
+    password: bbyhlaokcznsdaff
     properties:
       mail.smtp.auth: true
       mail.smtp.starttls.enable: true
@@ -42,6 +47,11 @@ spring:
         max-active: 1000
         max-idle: 16
         min-idle: 8
+  rabbitmq:
+    addresses: rabbitmq-server
+    username: mldnjava
+    password: hello
+    virtual-host: /
 # mybatis配置
 mybatis:
   mapper-locations: classpath*:mapper*xml
@@ -81,7 +91,9 @@ qiniu:
     # 配置secretKey
     secretKey: bZ8OtQY_FzGN2_9oMnuedpkE4HaGqx1zdtIKh-b1
     # 配置空间名称
-    bucket: 20241237cat
+    bucket: 715cat
     # 配置域名
-    domain: sadj5svyg.hb-bkt.clouddn.com
+    domain: sgmbkyjvg.hd-bkt.clouddn.com
+
+
 

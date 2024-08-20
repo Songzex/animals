@@ -1,6 +1,6 @@
-package pojo.service;
+package com.scy.service;
 
-import pojo.domain.AnimalsAdditional;
+import com.scy.pojo.AnimalsAdditional;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

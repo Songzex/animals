@@ -2,15 +2,27 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.scy.mapper.AnimalMapper">
+<mapper namespace="pojo.mapper.AnimalMapper">
 
-<!--    <select id="findall" resultType="com.scy.pojo.Animal">-->
-<!--        SELECT * FROM animal WHERE  animals_uemail=#{animals_uemail};-->
-<!--    </select>-->
-    <!-- <select id="findall" resultType="com.scy.pojo.Animal">
-         SELECT animals_photo FROM animal WHERE  animals_uemail=#{animals_uemail}
-     </select>-->
-    <select id="findall" resultType="com.scy.pojo.Animal">
-        SELECT * FROM animal WHERE  animals_uemail=#{animals_uemail};
-    </select>
+    <resultMap id="BaseResultMap" type="com.scy.pojo.Animal">
+            <id property="animal_id" column="animal_id" jdbcType="INTEGER"/>
+            <result property="animal_age" column="animal_age" jdbcType="INTEGER"/>
+            <result property="animal_sex" column="animal_sex" jdbcType="TINYINT"/>
+            <result property="animal_name" column="animal_name" jdbcType="VARCHAR"/>
+            <result property="annimal_date" column="annimal_date" jdbcType="VARCHAR"/>
+            <result property="animal_shadow" column="animal_shadow" jdbcType="TINYINT"/>
+            <result property="animals_heathly" column="animals_heathly" jdbcType="VARCHAR"/>
+            <result property="animals_photo" column="animals_photo" jdbcType="VARCHAR"/>
+            <result property="animals_notes" column="animals_notes" jdbcType="VARCHAR"/>
+            <result property="animals_uemail" column="animals_uemail" jdbcType="VARCHAR"/>
+            <result property="animals_where" column="animals_where" jdbcType="VARCHAR"/>
+            <result property="animals_type" column="animals_type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        animal_id,animal_age,animal_sex,
+        animal_name,annimal_date,animal_shadow,
+        animals_heathly,animals_photo,animals_notes,
+        animals_uemail,animals_where,animals_type
+    </sql>
 </mapper>

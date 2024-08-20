@@ -56,6 +56,11 @@ public class ShiroConfig {
         Map<String, String> filterChainDefinitionMap = new LinkedHashMap<String, String>();
         filterChainDefinitionMap.put("/user/login/", "anon");
         filterChainDefinitionMap.put("/user/register/", "anon");
+        filterChainDefinitionMap.put("/article/findtagsariticle/","anon");
+        filterChainDefinitionMap.put("/animals/findall3/","anon");
+        filterChainDefinitionMap.put("/condominium/upload/","anon");
+        filterChainDefinitionMap.put("/animals/findalltui/","anon");
+        filterChainDefinitionMap.put("/user/alluserselelct","anon");
 //        filterChainDefinitionMap.put("/websocket/**", "anon");
 
         // 添加自己的过滤器并且取名为jwt

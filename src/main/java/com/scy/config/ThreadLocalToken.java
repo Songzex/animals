@@ -4,7 +4,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ThreadLocalToken {
-    private ThreadLocal<String> local=new ThreadLocal<>();/*属于线程同步中 无锁同步==*/
+    private ThreadLocal<String> local=new ThreadLocal<>();/* 线程副本 属于线程同步中   无锁同步==*/
 
     public void setToken(String token){
         local.set(token);

@@ -1,6 +1,6 @@
-package pojo.service;
+package com.scy.service;
 
-import pojo.domain.UserRoles;
+import com.scy.pojo.UserRole;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**
@@ -8,6 +8,6 @@ import com.baomidou.mybatisplus.extension.service.IService;
 * @description 针对表【user_roles】的数据库操作Service
 * @createDate 2024-05-12 12:41:38
 */
-public interface UserRolesService extends IService<UserRoles> {
+public interface UserRoleService extends IService<UserRole> {
 
 }

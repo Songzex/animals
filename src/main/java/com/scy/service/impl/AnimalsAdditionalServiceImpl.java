@@ -1,9 +1,9 @@
-package pojo.service.impl;
+package com.scy.service.impl;
 
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
-import pojo.domain.AnimalsAdditional;
-import pojo.service.AnimalsAdditionalService;
-import pojo.mapper.AnimalsAdditionalMapper;
+import com.scy.pojo.AnimalsAdditional;
+import com.scy.service.AnimalsAdditionalService;
+import com.scy.mapper.AnimalsAdditionalMapper;
 import org.springframework.stereotype.Service;
 
 /**

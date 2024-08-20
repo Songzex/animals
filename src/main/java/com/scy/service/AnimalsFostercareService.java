@@ -1,7 +1,7 @@
-package pojo.service;
+package com.scy.service;
 
-import pojo.domain.AnimalsFostercare;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.scy.pojo.AnimalsFostercare;
 
 /**
 * @author 24022
