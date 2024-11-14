@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 
+/**
+ * @author 24022
+ */
 @SpringBootApplication(scanBasePackages ="com.scy*")
 @EnableWebSocket
 @CrossOrigin(allowedHeaders = "content-type")
