@@ -130,7 +130,9 @@ public class CommentController {
         String userphoto = additional.getUserphoto();
         ////id  Articleid name date commentcontext  SecondComment  (string)
         log.info("222"+commentInster.getValue());
-        Comment comment = mongomapper.insert(new Comment(null, commentInster.getId(), existingUser.getUsername(), commentInster.getDates(), commentInster.getValue(),userphoto, new ArrayList<SecondComment>()));
+        Comment comment = mongomapper.insert(new Comment(null, commentInster.getId(),
+                existingUser.getUsername(), commentInster.getDates(),
+                commentInster.getValue(),userphoto, new ArrayList<SecondComment>()));
         Comment saved = mongomapper.save(comment);
         //插入到mongodb
         return null;
